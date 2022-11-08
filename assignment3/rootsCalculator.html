@@ -1,0 +1,68 @@
+<html>
+<head>
+    <script>
+        function Quadratic(form){
+            var a=form.label1.valueAsNumber;
+            var b=form.label2.valueAsNumber;
+            var c=form.label3.valueAsNumber;
+            //alert("a"+a + "b"+b+"c"+c);
+
+            var disc = (b * b) - (4 * (a * c));
+            //alert(disc);
+            var root1=0;
+            var root2=0;
+            var table="";
+            table+="<p>";
+                if(a > 99 || a < -99 || a==0 || b > 99 || b < -99 || c > 99 || c < -99){
+                    alert("Invalid Entry, the number should be between -99 and +99");
+                }
+                else{
+                    if((b * b) > (4 * a * c)){
+                    root1 = (-(b) + Math.sqrt(disc)) / (2 * a);
+                    root2 = (-(b) - Math.sqrt(disc)) / (2 * a);
+                    table+="Solution: x =" + root1.toFixed(3) + "x = " + root2.toFixed(3) + "</p>";
+                    document.getElementById("sol").innerHTML=table;
+                    }
+
+                    else if((b * b) == (4 * a * c)){
+                        root1 = (-(b) + Math.sqrt(disc)) / (2 * a);
+                        table+="Solution: x =" + root1.toFixed(3) + "</p>";
+                        document.getElementById("sol").innerHTML=table;
+                    }
+
+                    else{
+                        table+="Solution: xs roots are imaginary";
+                        document.getElementById("sol").innerHTML=table;
+                    }
+
+                }
+
+            
+
+       }
+
+    </script>
+
+</head>
+<body>
+   <h1> Quadratic Equations Root Calculator</h1> 
+   <br>
+   <p>This web page finds the roots of a polynomial equation of the following form:</p> <br>
+   <p>ax<sup>2</sup> + bx + c = 0</p>
+
+   <p> a, b, and c must be integers between -99 and +99, and a must be non-zero.</p>
+    <br>
+    <form>
+        a: <input type="number" name="label1"size="10"length="10"placeholder="enterfirst">
+        b: <input type="number" name="label2"size="10"length="10"placeholder="enterfirst">
+        c: <input type="number" name="label3"size="10"length="10"placeholder="enterfirst">
+
+        <br>
+        <input type="button" value="Calculate roots" ONCLICK="Quadratic(this.form);">
+
+    </form>
+<div id="sol"> </div>
+
+
+</body>
+</html>

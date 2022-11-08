@@ -1,0 +1,240 @@
+<html>
+<head>
+    <script>
+        function Validate(form){
+        var fname = form.fname.value;
+        var father = form.father.value;
+        var family = form.family.value;
+        var dob = form.dob.value;
+        var nat = form.nat.selectedIndex;
+        var num = form.num.value;
+        var mail = form.mail.value;
+        var from = form.from.selectedIndex;
+        var arr = form.arr.value;
+        var flight = form.flight.selectedIndex;
+        var male = document.getElementById('male');
+        var female = document.getElementById('female');
+        var check = form.check;
+        var vaxname = form.vaxname.value;
+        var covid = document.getElementById('c2');
+        covid.checked = true;
+
+
+
+        var name_regex =/^[a-zA-Z]+$/;
+       // var dob_regex = //;
+        var email_regex = /^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/;
+        var phone_regex = /^[0-9]{9}/;
+
+        var msg = "";
+        var va = "";
+            if(fname == ""){
+                msg+="Please enter proper first name\n";
+            }
+            else{
+                if(!(fname.match(name_regex))){
+                    msg+="please enter proper first name\n";
+                }
+            }
+            if(father == ""){
+                msg+="Please enter proper father name\n";
+            }
+            else{
+                if(!(father.match(name_regex))){
+                    msg+="please enter proper father name\n";
+                }
+            }
+            if(family == ""){
+                msg+="Please enter proper family name\n";
+            }
+            else{
+                if(!(family.match(name_regex))){
+                    msg+="please enter proper family name\n";
+                }
+            }
+            if(dob == ""){
+                msg+="Please enter proper dob\n";
+            }
+            if(nat == ""){
+                msg+="please enter nationality\n";
+            }
+
+            if(num == ""){
+                msg+="Please enter proper phone number\n";
+            }
+            else{
+                if(!(num.match(phone_regex))){
+                    msg+="Please enter proper phone number\n";
+                }
+            }
+            if(mail == ""){
+                msg+="Please enter proper email\n";
+            }
+            else{
+                if(!(mail.match(email_regex))){
+                    msg+="Please enter proper email values\n";
+                }
+            }
+            if(from == ""){
+                msg+="please enter where you are from.\n";
+            }
+            if(check.checked){
+                if(vaxname == ""){
+                    va += "Please enter vax name\n";
+                }
+            }
+            else{
+                if(!(vaxname=="")){
+                    form.check.checked = true;
+                }
+            }
+
+            if(arr == ""){
+                msg+="Please enter proper date of arrival and please have it be a real date of arrival\n";   
+            }
+
+            if(flight == ""){
+                msg+="please enter proper flight information\n";   
+
+            }
+            if(!(male.checked || female.checked)){
+                msg+="Please enter proper gender\n";   
+
+            }
+
+
+            if(!va==""){
+                alert(va);
+            }
+            if(!msg==""){
+                alert(msg);
+            }
+            else{
+                document.getElementById('validation').innerHTML= "<h1>Thank you for filling out the form!</h1>";          
+            }
+        }
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+    <h1>Welcome to united states</h1>
+    <h2>Form validation</h2>
+<form >
+<fieldset> 
+<legend>Personal Information </legend>
+<table>
+<tr>
+<td> First Name: </td>
+<td> <input type="text" size="30"  placeholder="First Name" name="fname"> </td>
+</tr>
+<tr>
+<td> Father Name: </td>
+<td> <input type="text" size="30" placeholder="Father Name" name="father"> </td>
+</tr>
+<tr>
+<td> Family Name: </td>
+<td> <input type="text" size="30"  placeholder="Family Name" name="family"> </td>
+</tr>
+<tr>
+<td> Date of Birth </td>
+
+<td>  <input type="date" size="30"  placeholder="DD/MM/YYYY" name="dob"> </td>
+</tr>
+
+<tr>
+<td> Nationality: </td>
+<td> <select name="nat">
+<option > - Please Select - </option>
+<option > Lebanese </option>
+<option > Syrian </option>
+<option > American</option>
+</select>
+</td>
+</tr>
+<tr>
+<td> Phone number: </td>
+<td>  <input type="number" size="30"  placeholder="Your Phone number" name="num"></td>
+</tr>
+<tr>
+<td> Mail: </td>
+<td>  <input type="email" size="30"  placeholder="Your email" name="mail"></td>
+</tr>
+
+<tr>
+<td> Coming From: </td>
+<td> <select name="from" >
+<option > -Please Select- </option>
+<option > USA </option>
+<option > France</option>
+<option > London</option>
+</select>
+</td>
+</tr>
+<tr>
+<td> Date of Arrival to United States </td>
+
+<td>  <input type="date" size="30"  placeholder="DD/MM/YYYY" name="arr"> </td>
+</tr>
+<tr>
+<td> Flight Name: </td>
+<td> <select name="flight">
+<option > -Please Select- </option>
+<option > Air France </option>
+<option > Mea</option>
+<option > Turkish airlines</option>
+</select>
+</td>
+</tr>
+<tr>
+
+<td> Gender: </td>
+<td> <input type="radio" name="g" name="male" id="male" > Male 
+<input type="radio" name= "g" name="female" id="female"> Female
+</td>
+</tr>
+
+</table>
+</fieldset>
+<br>
+<br>
+
+<fieldset>
+    <legend > Information about Covi19</legend>
+    Did you took COVID19 vaccine?
+    
+    <p>
+    <input type="checkbox" name = "check"> 
+    I am vaccinated!
+    </p>
+    <p>
+    Please select the vaccin:
+    
+    <select name="vaxname" >
+    <option > -Please Select- </option>
+    <option > Pfizer </option>
+    <option > AstraZeneca </option>
+    <option > Moderna</option>
+    </select>
+    </p>
+    Have you ever undergone the specific COVID19 PCR test?
+    
+    <p>
+    <input type="radio" id="c1" name="covid" value="yes"> 
+    yes 
+    <input type="radio" id="c2" name="covid" value="no"> No
+    </p>
+    </fieldset>
+    <center>
+<input  type="button" value="Submit" onclick="Validate(this.form);">
+<input  type ="reset" value="Reset"></center>
+<div id="validation"></div>
+</form>
+</body>
+
+
+</html> 
